@@ -1,17 +1,15 @@
 import React from 'react'
-import { SendName } from './App'
-import { useContext } from 'react'
+import { useStateValue } from './state/StateProvider'
 
 const Work = () => {
-    const name = useContext(SendName)
+  const [{work}, dispatch] = useStateValue()
   return (
     <div>
-        <h1>Workpage Name: {name.name}</h1>
-        <p>Number: {name.state.work}</p>
-        <p>Home: {name.state.home}</p>
-        <button onClick={() => name.dispatch({type: 'work', value: 20 })}>Click Me</button>
+      <h1>Work - {work}</h1>
+      <button onClick={() => dispatch({type: 'work', value: 1})}>Increment</button>
     </div>
   )
+
 }
 
 export default Work
